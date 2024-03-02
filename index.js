@@ -59,6 +59,7 @@ app.put(
   "/:id",
   async (req, res) => {
     console.log(req.params.id);
+    console.log(req.body);
     const newPost = await Location.findByIdAndUpdate(
       req.params.id,
       {
@@ -67,8 +68,6 @@ app.put(
       { new: true }
     );
     try {
-      console.log(req.body);
-
       res.status(200).json(newPost);
     } catch (err) {
       res.status(500).json(err.message);
