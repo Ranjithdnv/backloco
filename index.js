@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 const Location = require("./location");
 
-app.use(cors("https://frontloco.onrender.com/"));
+app.use(cors("https://frontloco.onrender.com"));
 
 console.log(0);
 
