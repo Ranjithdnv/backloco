@@ -50,25 +50,32 @@ app.post("/", async (req, res) => {
     res.status(200).json(savedPost);
   } catch (err) {
     res.status(500).json(err.message);
+    console.log(0);
   }
   // res.send(req.body)yr
 });
 //
-app.put("/numberupdate/", async (req, res) => {
-  const newPost = await Location.findByIdAndUpdate(
-    req.body._id,
-    { $set: { dayofarrival: req.body.dayofarrival, date: req.body.date } },
-    { new: true }
-  );
-  try {
-    console.log(req.body);
+app.put(
+  "/:id",
+  async (req, res) => {
+    console.log(req.params.id);
+    const newPost = await Location.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: { moviename: req.body.moviename, writtenby: req.body.writtenby },
+      },
+      { new: true }
+    );
+    try {
+      console.log(req.body);
 
-    res.status(200).json(newPost);
-  } catch (err) {
-    res.status(500).json(err.message);
+      res.status(200).json(newPost);
+    } catch (err) {
+      res.status(500).json(err.message);
+    }
   }
   // res.send(req.body)
-});
+);
 //
 app.get("/", async (req, res) => {
   try {
